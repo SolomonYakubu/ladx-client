@@ -5,7 +5,9 @@ import ngFlag from "../../public/icons/ng-flag.png";
 import rwFlag from "../../public/icons/rw-flag.png";
 import Image from "next/image";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
+import { Toaster } from "@/components/ui/toaster";
+import { useToast } from "@/components/ui/use-toast";
 const countries = [
   { name: "Nigeria", code: "+234", icon: ngFlag },
   { name: "Rwanda", code: "+250", icon: rwFlag },
@@ -22,7 +24,8 @@ const Signup = () => {
     password: "",
   });
   const [loading, setLoading] = useState(false);
-
+  const { toast } = useToast();
+  const router = useRouter();
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -69,8 +72,17 @@ const Signup = () => {
       }
       const result = await response.json();
       console.log("Success:", result);
+      toast({
+        description: "Account created successfully! Please login to continue.",
+      });
+      router.push("/login");
     } catch (error) {
       console.error("Error:", error);
+      toast({
+        variant: "destructive",
+
+        description: "An error occurred. Please try again.",
+      });
     } finally {
       setLoading(false);
     }
@@ -78,6 +90,7 @@ const Signup = () => {
 
   return (
     <div className="flex flex-col md:flex-row w-full md:gap-10 py-10">
+      <Toaster />
       <h1 className="text-textcolor1 text-3xl font-bold md:hidden px-5">
         LadX<span className="text-primary text-base">beta</span>
       </h1>
