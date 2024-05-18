@@ -89,7 +89,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row w-full md:gap-10 py-10">
+    <div className="flex flex-col md:flex-row w-full py-10">
       <Toaster />
       <h1 className="text-textcolor1 text-3xl font-bold md:hidden px-5">
         LadX<span className="text-primary text-base">beta</span>
@@ -102,7 +102,7 @@ const Signup = () => {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col justify-center items-center text-textcolor1 gap-3 p-5"
+        className="flex flex-col justify-center items-center text-textcolor1 gap-3 p-5 md:mx-10"
       >
         <h1 className="text-left self-start font-bold py-5 md:text-4xl text-3xl text-textcolor1">
           Create an account

@@ -83,7 +83,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row w-full md:gap-10 py-10">
+    <div className="flex flex-col md:flex-row w-full  py-10">
       <Toaster />
       {isLoggedIn ? (
         <div className="w-full">
@@ -94,7 +94,7 @@ const Login = () => {
           <h1 className="text-textcolor1 text-3xl font-bold md:hidden px-5">
             LadX<span className="text-primary text-base">beta</span>
           </h1>
-          <div className="hidden md:block bg-gray-100 rounded-r-[3rem] md:w-[55%] p-32 pt-5">
+          <div className="hidden  md:block bg-gray-100 rounded-r-[3rem] md:w-[55%] p-32 pt-5">
             <h1 className="text-textcolor1 text-4xl pb-24 font-bold">
               LadX<span className="text-primary text-base">beta</span>
             </h1>
@@ -102,7 +102,7 @@ const Login = () => {
           </div>
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col justify-center items-center text-textcolor1 gap-3 p-5 md:w-[40%]"
+            className="flex flex-col justify-center items-center text-textcolor1 gap-3 p-5 md:w-[40%] md:mx-10"
           >
             <h1 className="text-left self-start font-bold py-5 md:text-4xl text-3xl text-textcolor1">
               Log in
