@@ -20,13 +20,13 @@ export default function FaqComponent(props: any) {
         </p>
         {(expanded && (
           <AiOutlineMinus
-            size={30}
-            className="text-secondary flex-auto m-2 border-textcolor1 border p-1 rounded-full "
+            size={25}
+            className="text-textcolor2 flex-auto  border-textcolor2 border w-7 h-7 p-1 rounded-full "
           />
         )) || (
           <AiOutlinePlus
-            size={30}
-            className="text-secondary flex-auto m-2 border-textcolor1 border p-1 rounded-full"
+            size={25}
+            className="text-textcolor2 flex-auto  border-textcolor2 border w-7 h-7 p-1 rounded-full"
           />
         )}
       </div>

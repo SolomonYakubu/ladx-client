@@ -7,6 +7,7 @@ import sendPackage from "../public/images/Send_package.png";
 import faqImg from "../public/images/faq.svg";
 import Accordion from "../components/Accordion";
 import Waitlist from "../components/waitlist";
+import Link from "next/link";
 export default function Home() {
   const [waitlist, setWaitlist] = useState<boolean>(false);
   const role = [
@@ -51,88 +52,81 @@ export default function Home() {
   });
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between `}
+      className={`flex min-h-screen flex-col items-center justify-between transition-all duration-500`}
     >
-      <div
-        className={`flex min-h-screen flex-col items-center justify-between transition-all duration-500 ${
-          waitlist && " max-h-screen overflow-hidden blur-sm"
-        }`}
-      >
-        <section className="flex flex-col items-center justify-center w-full gap-10 px-5 py-5 bg-primary md:px-10">
-          <div className="flex justify-between w-full">
-            <h1 className="text-4xl font-bold text-textcolor1">
-              LadX<span className="text-base text-white">coming soon</span>
-            </h1>
-            <button
-              className=" bg-secondary text-white p-2 px-7 rounded-lg"
-              onClick={() => setWaitlist(true)}
-            >
-              {" "}
-              Early access
-            </button>
-          </div>
-
-          <p className="text-3xl md:text-6xl md:w-1/2 text-center  text-white font-extrabold">
-            Logistics strategy with a difference
-          </p>
-          <button
+      <section className="flex flex-col items-center justify-center w-full gap-10 px-5 md:px-24 py-5 bg-primary ">
+        <div className="flex justify-between w-full">
+          <h1 className="text-4xl font-bold text-textcolor1">
+            LadX<span className="text-base text-white">coming soon</span>
+          </h1>
+          <Link
             className=" bg-secondary text-white p-2 px-7 rounded-lg"
-            onClick={() => setWaitlist(true)}
+            href="/waitlist"
           >
-            {" "}
-            Click to get early access
-          </button>
-          <Image src={hero} alt="Hero" className="md:w-3/4 rounded-3xl" />
-        </section>
-        <section className="flex flex-col items-center justify-center w-full gap-10 px-4 py-5 bg-gray-100">
-          <p className="text-lg text-center md:w-1/2 text-textcolor1 ">
-            At LadX, we make sending packages easy and affordable. By connecting
-            senders with travelers, we offer a seamless and eco-friendly
-            delivery solution.
-          </p>
-          <div className="flex flex-col  justify-center items-center  w-full py-5 md:py-10">
-            {role.map((item, index) => (
-              <div
-                key={index}
-                className=" md:w-3/4 overflow-hidden ga md:gap-20 flex flex-col md:flex-row md:even:flex-row-reverse  items-center justify-center md:justify-start p-3 py-5"
-              >
-                <Image src={item.image} alt={item.name} />
-                <div className=" py-4 md:w-[55%]">
-                  <div className=" text-xl mb-2 text-primary font-bold">
-                    {item.name}
-                  </div>
+            Early access
+          </Link>
+        </div>
 
-                  <p className=" text-textcolor2 text-base ">{item.desc}</p>
+        <p className="text-3xl md:text-6xl md:w-1/2 text-center  text-white font-extrabold">
+          Logistics strategy with a difference
+        </p>
+        <Link
+          href="/waitlist"
+          className=" bg-secondary text-white p-2 px-7 rounded-lg"
+          onClick={() => setWaitlist(true)}
+        >
+          {" "}
+          Click to get early access
+        </Link>
+        <Image src={hero} alt="Hero" className="md:w-3/4 rounded-3xl" />
+      </section>
+      <section className="flex flex-col items-center justify-center w-full gap-10 px-4 py-5 bg-gray-100">
+        <p className="text-lg text-center md:w-1/2 text-textcolor1 ">
+          At LadX, we make sending packages easy and affordable. By connecting
+          senders with travelers, we offer a seamless and eco-friendly delivery
+          solution.
+        </p>
+        <div className="flex flex-col  justify-center items-center  w-full py-5 md:py-10">
+          {role.map((item, index) => (
+            <div
+              key={index}
+              className=" md:w-3/4 overflow-hidden ga md:gap-20 flex flex-col md:flex-row md:even:flex-row-reverse  items-start justify-center md:justify-start p-3 py-5"
+            >
+              <Image src={item.image} alt={item.name} />
+              <div className=" py-4 md:w-[55%]">
+                <div className=" text-xl mb-2 text-primary font-bold">
+                  {item.name}
                 </div>
+
+                <p className=" text-textcolor2 text-base ">{item.desc}</p>
               </div>
-            ))}
-          </div>
-        </section>
-        <section className="flex flex-col items-center justify-center w-full gap-10 md:px-32 px-5 py-5 md:py-10 bg-white">
-          <div className="flex flex-col md:flex-row gap-5">
-            <div className="flex flex-col items-center justify-start h-fit w-full gap-5 bg-primary rounded-lg md:w-1/2 p-10">
-              <p className="text-white text-3xl font-bold">
-                Find the answers to all of our most frequently asked questions
-              </p>
-              <Image src={faqImg} alt="" />
             </div>
-            <div className="flex flex-col items-center justify-center w-full gap-5">
-              {faqComponents}
-            </div>
+          ))}
+        </div>
+      </section>
+      <section className="flex flex-col items-center justify-center w-full gap-10 md:px-32 px-5 py-5 md:py-10 bg-white">
+        <div className="flex flex-col md:flex-row gap-5">
+          <div className="flex flex-col items-center justify-start h-fit w-full gap-5 bg-primary rounded-lg md:w-1/2 p-10">
+            <p className="text-white text-3xl font-bold">
+              Find the answers to all of our most frequently asked questions
+            </p>
+            <Image src={faqImg} alt="" />
           </div>
-        </section>
-        <footer className="flex flex-col items-start justify-center w-full  px-5 py-5 bg-white">
-          <div className="flex justify-between w-full">
-            <h1 className="text-4xl font-bold text-textcolor1">
-              LadX<span className="text-base text-primary">coming soon</span>
-            </h1>
+          <div className="flex flex-col items-center justify-center w-full gap-5">
+            {faqComponents}
           </div>
-          <p className="text-lg text-left text-textcolor2">
-            © {new Date().getFullYear()} LadX. All rights reserved.
-          </p>
-        </footer>
-      </div>
-      <Waitlist waitlist={waitlist} setWaitlist={setWaitlist} />
+        </div>
+      </section>
+      <footer className="flex flex-col items-start justify-center w-full  px-5 py-5 bg-white">
+        <div className="flex justify-between w-full">
+          <h1 className="text-4xl font-bold text-textcolor1">
+            LadX<span className="text-base text-primary">coming soon</span>
+          </h1>
+        </div>
+        <p className="text-lg text-left text-textcolor2">
+          © {new Date().getFullYear()} LadX. All rights reserved.
+        </p>
+      </footer>
     </main>
   );
 }

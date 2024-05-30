@@ -66,7 +66,7 @@ const Waitlist = ({
 
   return (
     <div
-      className={`flex flex-col w-full py-10 px-5 h-screen bg-inherit justify-center items-center fixed transition-all duration-500 ${
+      className={`flex flex-col w-full py-10 px-5 h-screen bg-inherit justify-center items-center absolute transition-all duration-500 ${
         (waitlist && "scale-100") || "scale-0"
       }  `}
     >
