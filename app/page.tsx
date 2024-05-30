@@ -110,7 +110,7 @@ export default function Home() {
         </section>
         <section className="flex flex-col items-center justify-center w-full gap-10 md:px-32 px-5 py-5 md:py-10 bg-white">
           <div className="flex flex-col md:flex-row gap-5">
-            <div className="flex flex-col items-center justify-start w-full gap-5 bg-primary rounded-lg md:w-1/2 p-10">
+            <div className="flex flex-col items-center justify-start h-fit w-full gap-5 bg-primary rounded-lg md:w-1/2 p-10">
               <p className="text-white text-3xl font-bold">
                 Find the answers to all of our most frequently asked questions
               </p>
