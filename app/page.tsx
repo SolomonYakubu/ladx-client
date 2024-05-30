@@ -72,7 +72,7 @@ export default function Home() {
             </button>
           </div>
 
-          <p className="text-3xl md:text-6xl md:px-80 text-center  text-white font-extrabold">
+          <p className="text-3xl md:text-6xl md:w-1/2 text-center  text-white font-extrabold">
             Logistics strategy with a difference
           </p>
           <button
