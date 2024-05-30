@@ -58,7 +58,7 @@ export default function Home() {
           waitlist && " max-h-screen overflow-hidden blur-sm"
         }`}
       >
-        <section className="flex flex-col items-center justify-center w-full gap-10 px-5 py-5 bg-primary">
+        <section className="flex flex-col items-center justify-center w-full gap-10 px-5 py-5 bg-primary md:px-10">
           <div className="flex justify-between w-full">
             <h1 className="text-4xl font-bold text-textcolor1">
               LadX<span className="text-base text-white">coming soon</span>
@@ -84,7 +84,7 @@ export default function Home() {
           </button>
           <Image src={hero} alt="Hero" className="md:w-3/4 rounded-3xl" />
         </section>
-        <section className="flex flex-col items-center justify-center w-full gap-10 px-5 py-5 bg-gray-100">
+        <section className="flex flex-col items-center justify-center w-full gap-10 px-4 py-5 bg-gray-100">
           <p className="text-lg text-center md:w-1/2 text-textcolor1 ">
             At LadX, we make sending packages easy and affordable. By connecting
             senders with travelers, we offer a seamless and eco-friendly
