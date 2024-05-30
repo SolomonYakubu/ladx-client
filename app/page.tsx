@@ -1,113 +1,138 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
-
+import hero from "../public/images/hero.jpg";
+import carryPackage from "../public/images/Carry_package.png";
+import sendPackage from "../public/images/Send_package.png";
+import faqImg from "../public/images/faq.svg";
+import Accordion from "../components/Accordion";
+import Waitlist from "../components/waitlist";
 export default function Home() {
+  const [waitlist, setWaitlist] = useState<boolean>(false);
+  const role = [
+    {
+      name: "Carry a Package",
+      image: carryPackage,
+      desc: "With Ladx you can help deliver packages during your travels, earning extra income while contributing to a cost-effective and eco-friendly logistics solution. ",
+    },
+    {
+      name: "Send a Package",
+      image: sendPackage,
+      desc: "With LadX, you can easily send your package through our network of travellers. Simply fill out the  package details, and we'll take care of the rest. Enjoy a seamless, cost-effective, and eco-friendly shipping experience. ",
+    },
+  ];
+  const faqs = [
+    {
+      title: "How does LadX work?",
+      description:
+        "Customers submit a delivery request on the LadX website or app, specifying the item details, pickup and drop-off locations in Nigeria and Rwanda. LadX then matches that request with a verified traveler who is already planning a trip between those locations. The traveler picks up the item and delivers it directly to the recipient.",
+    },
+    {
+      title: "What types of items can be sent via LadX?",
+      description: `LadX can accommodate most common shipment types like documents, electronics, clothes, books and other personal effects or light parcels. However, for safety reasons, restricted items like weapons, illegal drugs, perishable foods and hazardous materials are prohibited.`,
+    },
+    {
+      title: "How much does LadX cost?",
+      description: `LadX pricing is based on the size, weight and route for each shipment, with discounted rates compared to traditional couriers. You get an upfront price quote before booking a delivery.`,
+    },
+    {
+      title: "Is LadX reliable and safe?",
+      description: `Yes, LadX has robust identity verification and rating systems for both senders and travelers. Items are also insured against loss or damage.`,
+    },
+    {
+      title: "How soon can items be delivered?",
+      description: `Delivery speed depends on the next available verified traveler's trip schedule. Some routes may have multiple travelers per day, while others could take several days or weeks to match. LadX provides tracking and ETA updates.`,
+    },
+  ];
+  const faqComponents = faqs.map((faq, index) => {
+    return (
+      <Accordion title={faq.title} key={index} description={faq.description} />
+    );
+  });
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main
+      className={`flex min-h-screen flex-col items-center justify-between `}
+    >
+      <div
+        className={`flex min-h-screen flex-col items-center justify-between transition-all duration-500 ${
+          waitlist && " max-h-screen overflow-hidden blur-sm"
+        }`}
+      >
+        <section className="flex flex-col items-center justify-center w-full gap-10 px-5 py-5 bg-primary">
+          <div className="flex justify-between w-full">
+            <h1 className="text-4xl font-bold text-textcolor1">
+              LadX<span className="text-base text-white">coming soon</span>
+            </h1>
+            <button
+              className=" bg-secondary text-white p-2 px-7 rounded-lg"
+              onClick={() => setWaitlist(true)}
+            >
+              {" "}
+              Early access
+            </button>
+          </div>
+
+          <p className="text-3xl md:text-6xl md:px-80 text-center  text-white font-extrabold">
+            Logistics strategy with a difference
+          </p>
+          <button
+            className=" bg-secondary text-white p-2 px-7 rounded-lg"
+            onClick={() => setWaitlist(true)}
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+            {" "}
+            Click to get early access
+          </button>
+          <Image src={hero} alt="Hero" className="md:w-3/4 rounded-3xl" />
+        </section>
+        <section className="flex flex-col items-center justify-center w-full gap-10 px-5 py-5 bg-gray-100">
+          <p className="text-lg text-center md:px-96 text-textcolor1">
+            At LadX, we make sending packages easy and affordable. By connecting
+            senders with travelers, we offer a seamless and eco-friendly
+            delivery solution.
+          </p>
+          <div className="flex flex-col  justify-center items-center  w-full py-5 md:py-10">
+            {role.map((item, index) => (
+              <div
+                key={index}
+                className=" md:w-3/4 overflow-hidden ga md:gap-20 flex flex-col md:flex-row md:even:flex-row-reverse  items-center justify-center md:justify-start p-3 py-5"
+              >
+                <Image src={item.image} alt={item.name} />
+                <div className=" py-4 md:w-[55%]">
+                  <div className=" text-xl mb-2 text-primary font-bold">
+                    {item.name}
+                  </div>
+
+                  <p className=" text-textcolor2 text-base ">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="flex flex-col items-center justify-center w-full gap-10 md:px-32 px-5 py-5 md:py-10 bg-white">
+          <div className="flex flex-col md:flex-row gap-5">
+            <div className="flex flex-col items-center justify-start w-full gap-5 bg-primary rounded-lg md:w-1/2 p-10">
+              <p className="text-white text-3xl font-bold">
+                Find the answers to all of our most frequently asked questions
+              </p>
+              <Image src={faqImg} alt="" />
+            </div>
+            <div className="flex flex-col items-center justify-center w-full gap-5">
+              {faqComponents}
+            </div>
+          </div>
+        </section>
+        <footer className="flex flex-col items-start justify-center w-full  px-5 py-5 bg-white">
+          <div className="flex justify-between w-full">
+            <h1 className="text-4xl font-bold text-textcolor1">
+              LadX<span className="text-base text-primary">coming soon</span>
+            </h1>
+          </div>
+          <p className="text-lg text-left text-textcolor2">
+            © {new Date().getFullYear()} LadX. All rights reserved.
+          </p>
+        </footer>
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <Waitlist waitlist={waitlist} setWaitlist={setWaitlist} />
     </main>
   );
 }
