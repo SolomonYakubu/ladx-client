@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import waitlistImg from "../../public/images/Sign_up.png";
 import Image from "next/image";
 import Link from "next/link";
+import { Toaster } from "@/components/ui/toaster";
+import { useToast } from "@/components/ui/use-toast";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -14,6 +16,7 @@ const Waitlist = () => {
     subscribe: false,
   });
   const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -53,17 +56,26 @@ const Waitlist = () => {
       }
       const result = await response.json();
       console.log("Success:", result);
-
+      toast({
+        description: "Data recorded successfully",
+      });
       // Optionally, clear form data or show a success message
     } catch (error) {
+      toast({
+        variant: "destructive",
+
+        description: "An error occurred. Please try again.",
+      });
       console.error("Error:", error);
     } finally {
       setLoading(false);
     }
   };
+  console.log(formData);
 
   return (
-    <div className="flex flex-col md:flex-row w-full md:gap-10 py-10">
+    <div className="flex flex-col md:flex-row w-full md:gap-10 py-10 transition-all duration-500">
+      <Toaster />
       <h1 className="text-textcolor1 text-3xl font-bold md:hidden px-5">
         LadX<span className="text-primary text-base">beta</span>
       </h1>
